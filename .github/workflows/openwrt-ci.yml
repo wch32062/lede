@@ -46,7 +46,9 @@ jobs:
 
       - name: Update feeds
         run: |
-          sed -i 's/#src-git helloworld/src-git helloworld/g' ./feeds.conf.default
+          echo "src-git ssrp https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
+          git clone https://github.com/xiaorouji/openwrt-passwall package/passwall
+          git clone https://github.com/kenzok8/litte package/litte
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 
